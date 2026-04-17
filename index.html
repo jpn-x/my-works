@@ -1188,6 +1188,11 @@
 </footer>
 
 <script>
+// モバイル判定 → mobile.html へ自動切替
+if(window.innerWidth < 768) {
+  location.replace('mobile.html');
+}
+
 // ── 桜の花びら生成 ──
 const canvas = document.querySelector('.bg-canvas');
 const colors = ['#ffb7c5','#ffd0de','#ffe4ec','#ffc8d8'];

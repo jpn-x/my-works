@@ -864,6 +864,11 @@ footer {
 
 
 <script>
+// PC判定 → index.html へ自動切替
+if(window.innerWidth >= 768) {
+  location.replace('index.html');
+}
+
 // 桜の花びら生成
 (function(){
   const hero = document.querySelector('.hero');
