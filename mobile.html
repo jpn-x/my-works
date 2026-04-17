@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>むらやん | Works</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;700&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:    #07070e;
+  --bg2:   #0c0c18;
+  --red:   #b5222a;
+  --pink:  #e8a0b4;
+  --gold:  #c4973e;
+  --gold2: #e2c060;
+  --white: #f4efe6;
+  --muted: #5a5f6e;
+  --line:  rgba(196,151,62,0.25);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  overflow-x: hidden;
+  max-width: 430px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ════════════════════════
+   HERO
+════════════════════════ */
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 680px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 72px;
+  gap: 0;
+}
+
+.hero-chara {
+  position: relative;
+  z-index: 10;
+  width: 180px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 0 24px rgba(232,160,180,0.4)) drop-shadow(0 0 60px rgba(196,151,62,0.15));
+  margin-bottom: 24px;
+  animation: chara-float 4s ease-in-out infinite;
+}
+
+@keyframes chara-float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* 夜空グラデ */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 0%, #1a1030 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, #1a0a1e 0%, transparent 60%),
+    linear-gradient(180deg, #05050f 0%, #0a0818 40%, #0f0a18 70%, #130c1a 100%);
+  z-index: 0;
+}
+
+/* 月 */
+.moon {
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, #fff8e8, #e8d090 50%, #b89040);
+  box-shadow: 0 0 40px rgba(200,160,60,0.35), 0 0 80px rgba(200,160,60,0.12);
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* 月の表面紋様 */
+.moon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,0.15) 0%, transparent 40%),
+    radial-gradient(circle at 65% 60%, rgba(0,0,0,0.1) 0%, transparent 35%),
+    radial-gradient(circle at 45% 75%, rgba(0,0,0,0.08) 0%, transparent 25%);
+}
+
+/* 富士山シルエット */
+.fuji-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 2;
+}
+
+.fuji-wrap svg { display: block; width: 100%; }
+
+/* 星 */
+.stars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* ヒーローテキスト */
+.hero-text {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 0 32px;
+}
+
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.hero-name {
+  font-family: 'Zen Old Mincho', serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  color: var(--white);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.hero-name-en {
+  font-size: 11px;
+  letter-spacing: 8px;
+  color: rgba(244,239,230,0.4);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.hero-rule {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 0 auto 20px;
+}
+
+.hero-sub {
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 2px;
+  color: rgba(244,239,230,0.55);
+  font-weight: 300;
+}
+
+/* スクロールインジケーター */
+.scroll-ind {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.scroll-ind span {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollpulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollpulse {
+  0%,100% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+  50%      { opacity: 0.3; }
+}
+
+/* 桜の花びら */
+.petal {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  animation: petalfall linear infinite;
+  opacity: 0;
+}
+
+@keyframes petalfall {
+  0%   { transform: translateY(-20px) rotate(0deg) translateX(0); opacity: 0; }
+  8%   { opacity: 0.8; }
+  85%  { opacity: 0.5; }
+  100% { transform: translateY(105vh) rotate(600deg) translateX(40px); opacity: 0; }
+}
+
+/* ════════════════════════
+   SECTION 共通
+════════════════════════ */
+.sec {
+  padding: 0;
+}
+
+.sec-head {
+  padding: 52px 28px 36px;
+  position: relative;
+}
+
+.sec-head::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--line), transparent);
+}
+
+.sec-num {
+  font-size: 72px;
+  font-family: 'Zen Old Mincho', serif;
+  color: rgba(196,151,62,0.06);
+  position: absolute;
+  top: 28px;
+  right: 24px;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sec-label {
+  font-size: 9px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sec-title {
+  font-family: 'Zen Old Mincho', serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--white);
+  line-height: 1.3;
+}
+
+.sec-title em {
+  font-style: normal;
+  color: var(--gold2);
+}
+
+/* ════════════════════════
+   WORKS
+════════════════════════ */
+.works-list {
+  padding: 0 20px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 作品カード */
+.wcard {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  background: #0e0e1c;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.2s ease;
+  -webkit-user-select: none;
+}
+
+.wcard:active {
+  transform: scale(0.985);
+  border-color: rgba(196,151,62,0.5);
+}
+
+/* 左の朱線 */
+.wcard::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--red);
+  opacity: 0.9;
+}
+
+/* カード番号 - 大きく薄く */
+.wcard-num {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: 'Zen Old Mincho', serif;
+  font-size: 52px;
+  line-height: 1;
+  color: rgba(196,151,62,0.07);
+  font-weight: 700;
+  user-select: none;
+  pointer-events: none;
+}
+
+.wcard-body {
+  padding: 22px 60px 22px 20px;
+}
+
+.wcard-tag {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.wcard-title {
+  font-family: 'Zen Old Mincho', serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.wcard-desc {
+  font-size: 11px;
+  line-height: 1.9;
+  color: rgba(244,239,230,0.72);
+  font-weight: 300;
+}
+
+/* 2ボタンのカード */
+.wcard-btns {
+  padding: 0 20px 18px 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.wbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  border-radius: 1px;
+  text-decoration: none;
+  font-family: 'Noto Serif JP', serif;
+  transition: opacity 0.2s;
+}
+
+.wbtn:active { opacity: 0.7; }
+
+.wbtn-main {
+  background: var(--red);
+  color: #fff;
+  border: 1px solid #8a1820;
+}
+
+.wbtn-sub {
+  background: transparent;
+  border: 1px solid rgba(196,151,62,0.4);
+  color: var(--gold2);
+}
+
+/* Coming soon */
+.wcard-coming {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.wcard-coming::before { background: var(--muted); }
+
+/* ════════════════════════
+   桜ボーダー区切り
+════════════════════════ */
+.sakura-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 28px;
+  margin: 4px 0;
+}
+
+.sakura-divider .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--line));
+}
+
+.sakura-divider .line:last-child {
+  background: linear-gradient(to left, transparent, var(--line));
+}
+
+.sakura-divider .cherry {
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+/* ════════════════════════
+   BLOG
+════════════════════════ */
+.blog-wrap {
+  padding: 0 20px 32px;
+}
+
+.blog-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #0e0e1c;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+  position: relative;
+}
+
+.blog-link:active { border-color: rgba(196,151,62,0.5); }
+
+/* ブログのヘッダー帯 */
+.blog-stripe {
+  height: 5px;
+  background: linear-gradient(to right, var(--red), #8B0000, var(--red));
+}
+
+.blog-content {
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.blog-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(181,34,42,0.15);
+  border: 1px solid rgba(181,34,42,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.blog-info .tag {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.blog-info h3 {
+  font-family: 'Zen Old Mincho', serif;
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.blog-info p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.blog-arrow {
+  margin-left: auto;
+  font-size: 18px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ════════════════════════
+   SNS
+════════════════════════ */
+.sns-wrap {
+  padding: 0 20px 60px;
+}
+
+.sns-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.sns-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 18px 8px;
+  background: #0e0e1c;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 2px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.sns-item:active {
+  background: #13132a;
+  border-color: rgba(196,151,62,0.4);
+}
+
+.sns-ico {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sns-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 1px;
+}
+
+.sns-handle {
+  font-size: 9px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ════════════════════════
+   FOOTER
+════════════════════════ */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 48px 28px 56px;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--bg), #040408);
+}
+
+.footer-crest {
+  margin: 0 auto 24px;
+  display: block;
+}
+
+.footer-msg {
+  font-family: 'Zen Old Mincho', serif;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: rgba(244,239,230,0.5);
+  margin-bottom: 10px;
+}
+
+.footer-copy {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(244,239,230,0.2);
+  text-transform: uppercase;
+}
+
+/* ════════════════════════
+   アニメーション
+════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.on { opacity: 1; transform: none; }
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+<header class="hero">
+
+  <!-- 星フィールド -->
+  <svg class="stars" viewBox="0 0 390 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g fill="white">
+      <circle cx="24"  cy="42"  r="0.8" opacity="0.7"/>
+      <circle cx="68"  cy="18"  r="1.2" opacity="0.5"/>
+      <circle cx="112" cy="66"  r="0.6" opacity="0.8"/>
+      <circle cx="156" cy="30"  r="1.0" opacity="0.6"/>
+      <circle cx="200" cy="12"  r="0.7" opacity="0.9"/>
+      <circle cx="244" cy="55"  r="0.8" opacity="0.5"/>
+      <circle cx="288" cy="22"  r="1.1" opacity="0.7"/>
+      <circle cx="340" cy="48"  r="0.6" opacity="0.8"/>
+      <circle cx="370" cy="15"  r="0.9" opacity="0.6"/>
+      <circle cx="44"  cy="110" r="0.7" opacity="0.5"/>
+      <circle cx="90"  cy="90"  r="1.0" opacity="0.4"/>
+      <circle cx="170" cy="105" r="0.8" opacity="0.6"/>
+      <circle cx="310" cy="88"  r="0.7" opacity="0.5"/>
+      <circle cx="360" cy="120" r="1.0" opacity="0.4"/>
+      <circle cx="16"  cy="170" r="0.6" opacity="0.6"/>
+      <circle cx="130" cy="150" r="0.9" opacity="0.3"/>
+      <circle cx="270" cy="140" r="0.7" opacity="0.5"/>
+      <circle cx="385" cy="165" r="0.8" opacity="0.4"/>
+    </g>
+  </svg>
+
+  <!-- 月 -->
+  <div class="moon"></div>
+
+  <!-- むらやんピクセルアート -->
+  <img class="hero-chara" src="murayan.png" alt="むらやん">
+
+  <!-- テキスト -->
+  <div class="hero-text">
+    <span class="hero-label">Works Gallery</span>
+    <span class="hero-name">むらやん</span>
+    <span class="hero-name-en">Murayan · Naoki Murakami</span>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">手作りWebツール &amp; 作品の置き場</p>
+  </div>
+
+  <!-- スクロール -->
+  <div class="scroll-ind">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+
+</header>
+
+
+<!-- ══════════════════════════════
+     WORKS
+══════════════════════════════ -->
+<section class="sec" id="works">
+  <div class="sec-head reveal">
+    <span class="sec-num">一</span>
+    <span class="sec-label">Works · 作品</span>
+    <h2 class="sec-title">つくった<em>もの</em></h2>
+  </div>
+
+  <div class="works-list">
+
+    <!-- X高度検索 -->
+    <a class="wcard reveal" href="https://x-post-tools.github.io/x-search/#keyword=%E3%83%A6%E3%83%8B%E3%83%81%E3%82%AB%E3%80%80%E5%A4%96%E4%BA%BA" target="_blank" rel="noopener">
+      <div class="wcard-num">一</div>
+      <div class="wcard-body">
+        <span class="wcard-tag">X · Search</span>
+        <div class="wcard-title">X 高度検索ツール</div>
+        <div class="wcard-desc">複雑な検索条件を直感的なUIで設定。目的のポストを素早く絞り込む。</div>
+      </div>
+    </a>
+
+    <!-- 株クラ -->
+    <a class="wcard reveal" href="https://kabukura-chain.github.io/network/index.html" target="_blank" rel="noopener">
+      <div class="wcard-num">二</div>
+      <div class="wcard-body">
+        <span class="wcard-tag">Stock · Network · 招待制</span>
+        <div class="wcard-title">株クラ X Network</div>
+        <div class="wcard-desc">株式クラスタのフォロー関係をインタラクティブなネットワーク図で可視化。</div>
+      </div>
+    </a>
+
+    <!-- ストップ高安 -->
+    <a class="wcard reveal" href="https://stopstock.github.io/stop-data/" target="_blank" rel="noopener">
+      <div class="wcard-num">三</div>
+      <div class="wcard-body">
+        <span class="wcard-tag">Stock · Market · 毎夕更新</span>
+        <div class="wcard-title">直近ストップ高・安 一覧</div>
+        <div class="wcard-desc">直近のストップ高・ストップ安銘柄を毎夕更新で一覧表示。市場の勢いを把握。</div>
+      </div>
+    </a>
+
+    <!-- TDnet -->
+    <div class="wcard reveal">
+      <div class="wcard-num">四</div>
+      <div class="wcard-body">
+        <span class="wcard-tag">IR · News · Realtime</span>
+        <div class="wcard-title">TDnet リアルタイム更新ツール</div>
+        <div class="wcard-desc">適時開示情報を自動取得・リアルタイム更新。Web版・アプリ版ともにPC専用。デスクトップでフル活用してください。</div>
+      </div>
+      <div class="wcard-btns">
+        <a class="wbtn wbtn-main" href="https://jpn-x.github.io/tdnet-web/" target="_blank" rel="noopener">Web版 ↗</a>
+        <a class="wbtn wbtn-sub" href="https://github.com/jpn-x/tdnet-monitor/releases/download/v2.0/tdnet_monitor_v2.zip" download>⬇ アプリDL</a>
+      </div>
+    </div>
+
+    <!-- 自伝著書 -->
+    <a class="wcard reveal" href="https://cadillac600.github.io/binbo-banzai/" target="_blank" rel="noopener">
+      <div class="wcard-num">五</div>
+      <div class="wcard-body">
+        <span class="wcard-tag">自伝 · エッセイ · WEB書籍</span>
+        <div class="wcard-title">自伝著書「ビンボー万歳！」</div>
+        <div class="wcard-desc">波乱万丈の半生を綴った自伝的エッセイのWEB版。全編無料公開。</div>
+      </div>
+    </a>
+
+    <!-- Coming Soon -->
+    <div class="wcard wcard-coming reveal">
+      <div class="wcard-num">六</div>
+      <div class="wcard-body">
+        <span class="wcard-tag">Coming Soon</span>
+        <div class="wcard-title">次回作・仕込み中</div>
+        <div class="wcard-desc">現在開発中です。しばらくお待ちください。</div>
+      </div>
+    </div>
+
+  </div><!-- /works-list -->
+</section>
+
+
+<!-- ══════════════════════════════
+     SNS
+══════════════════════════════ -->
+<section class="sec" id="sns">
+  <div class="sec-head reveal">
+    <span class="sec-num">二</span>
+    <span class="sec-label">SNS · つながる</span>
+    <h2 class="sec-title">少数派の諸君は<em>チェック！</em></h2>
+  </div>
+
+  <div class="sns-wrap">
+    <div class="sns-grid reveal">
+
+      <a class="sns-item" href="https://x.com/cadillac600" target="_blank" rel="noopener">
+        <div class="sns-ico" style="background:#000;border:1.5px solid #333;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.632 5.903-5.632z"/></svg>
+        </div>
+        <div class="sns-name">X</div>
+        <div class="sns-handle">@cadillac600</div>
+      </a>
+
+      <a class="sns-item" href="https://www.youtube.com/" target="_blank" rel="noopener">
+        <div class="sns-ico" style="background:#ff0000;border:1.5px solid #cc0000;">
+          <svg width="20" height="14" viewBox="0 0 24 17" fill="white"><path d="M23.5 2.5a3 3 0 0 0-2.1-2.1C19.5 0 12 0 12 0S4.5 0 2.6.4A3 3 0 0 0 .5 2.5C0 4.4 0 8.5 0 8.5s0 4.1.5 6a3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.4a3 3 0 0 0 2.1-2.1C24 12.6 24 8.5 24 8.5s0-4.1-.5-6zM9.75 12V5l6.5 3.5-6.5 3.5z"/></svg>
+        </div>
+        <div class="sns-name">YouTube</div>
+        <div class="sns-handle">チャンネル</div>
+      </a>
+
+      <a class="sns-item" href="https://www.instagram.com/cadillac600/?hl=ja" target="_blank" rel="noopener">
+        <div class="sns-ico" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);border:1.5px solid #cc2366;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg>
+        </div>
+        <div class="sns-name">Instagram</div>
+        <div class="sns-handle">@cadillac600</div>
+      </a>
+
+      <a class="sns-item" href="https://www.tiktok.com/@murayan800?lang=ja-JP" target="_blank" rel="noopener">
+        <div class="sns-ico" style="background:#010101;border:1.5px solid #333;">
+          <svg width="16" height="18" viewBox="0 0 24 27" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.2 8.2 0 0 0 4.79 1.52V6.75a4.85 4.85 0 0 1-1.02-.06z"/></svg>
+        </div>
+        <div class="sns-name">TikTok</div>
+        <div class="sns-handle">@murayan800</div>
+      </a>
+
+      <a class="sns-item" href="https://www.facebook.com/naoki.murakami.90" target="_blank" rel="noopener">
+        <div class="sns-ico" style="background:#1877f2;border:1.5px solid #1255b0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </div>
+        <div class="sns-name">Facebook</div>
+        <div class="sns-handle">村上直樹</div>
+      </a>
+
+      <a class="sns-item" href="https://cadillac600.blog.fc2.com/" target="_blank" rel="noopener">
+        <div class="sns-ico" style="background:#b5222a;border:1.5px solid #8a1820;">
+          <span style="font-size:20px;">✍️</span>
+        </div>
+        <div class="sns-name">Blog</div>
+        <div class="sns-handle">FC2ブログ</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- 桜ディバイダー -->
+<div class="sakura-divider reveal">
+  <div class="line"></div>
+  <span class="cherry">🌸</span>
+  <span class="cherry">🌸</span>
+  <span class="cherry">🌸</span>
+  <div class="line"></div>
+</div>
+
+
+<!-- ══════════════════════════════
+     BLOG（フッター直前）
+══════════════════════════════ -->
+<section class="sec" id="blog">
+  <div class="sec-head reveal">
+    <span class="sec-num">三</span>
+    <span class="sec-label">Blog · ブログ</span>
+    <h2 class="sec-title">書いた<em>こと</em></h2>
+  </div>
+
+  <div class="blog-wrap">
+    <a class="blog-link reveal" href="https://cadillac600.blog.fc2.com/" target="_blank" rel="noopener">
+      <div class="blog-stripe"></div>
+      <div class="blog-content">
+        <div class="blog-icon">✍️</div>
+        <div class="blog-info">
+          <span class="tag">Blog · Essay · Daily</span>
+          <h3>むらやんブログ</h3>
+          <p>株・投資・日常・人生観をざっくばらんに。</p>
+        </div>
+        <div class="blog-arrow">›</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer>
+  <!-- 家紋風SVG -->
+  <svg class="footer-crest" viewBox="0 0 80 80" width="60" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="40" r="36" fill="none" stroke="rgba(196,151,62,0.25)" stroke-width="1"/>
+    <circle cx="40" cy="40" r="28" fill="none" stroke="rgba(196,151,62,0.15)" stroke-width="0.5"/>
+    <!-- 梅の花 -->
+    <g fill="none" stroke="rgba(196,151,62,0.4)" stroke-width="1">
+      <circle cx="40" cy="22" r="8"/>
+      <circle cx="55" cy="31" r="8"/>
+      <circle cx="49" cy="49" r="8"/>
+      <circle cx="31" cy="49" r="8"/>
+      <circle cx="25" cy="31" r="8"/>
+    </g>
+    <circle cx="40" cy="40" r="4" fill="rgba(196,151,62,0.35)"/>
+  </svg>
+
+  <p class="footer-msg">またのお越しを</p>
+  <p class="footer-copy">© 2025 むらやん工房 · Crafted with Claude Code</p>
+</footer>
+
+
+<script>
+// 桜の花びら生成
+(function(){
+  const hero = document.querySelector('.hero');
+  const shapes = ['60% 40% 60% 40%','50% 50% 40% 60%','40% 60% 50% 50%'];
+  const pinks = ['#ffb7c5','#ffd0de','#f4a0b8','#ffe0ea','#e890a8'];
+  for(let i = 0; i < 16; i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 5 + Math.random() * 8;
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      top:-20px;
+      width:${size}px;
+      height:${size}px;
+      background:${pinks[Math.floor(Math.random()*pinks.length)]};
+      border-radius:${shapes[Math.floor(Math.random()*shapes.length)]};
+      animation-delay:${Math.random()*14}s;
+      animation-duration:${9+Math.random()*8}s;
+    `;
+    hero.appendChild(p);
+  }
+})();
+
+// スクロールリビール
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('on'), i * 70);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
