@@ -471,6 +471,7 @@
   .art-tdnet  { background: linear-gradient(135deg, #1a0f0a, #2d1f15); }
   .art-book   { background: linear-gradient(135deg, #1a100a, #2d1e10); }
   .art-soon   { background: #0d0d1a; }
+  .art-car    { background: linear-gradient(135deg, #0f0c29, #1a1535); }
 
   /* ── SNS / BLOG セクション ── */
   .connect-grid {
@@ -1139,6 +1140,91 @@
         <p class="card-desc">
           JR東日本車両管理ツールのダイレクトアクセス版。
           リダイレクトなしで即アクセスできるシンプルな構成。
+        </p>
+        <div class="card-links">
+          <span class="btn btn-primary">開く ↗</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- 10: 車保険ダッシュボード -->
+    <a class="card fade-in" href="https://jpn-x.github.io/car-insurance-dashboard/" target="_blank" rel="noopener">
+      <div class="card-art art-car">
+        <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="carbg" cx="50%" cy="40%">
+              <stop offset="0%" stop-color="#1a1535"/>
+              <stop offset="100%" stop-color="#0a0820"/>
+            </radialGradient>
+            <radialGradient id="moon" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fffde7"/>
+              <stop offset="100%" stop-color="#c9a84c"/>
+            </radialGradient>
+          </defs>
+          <rect width="400" height="200" fill="url(#carbg)"/>
+          <!-- 星 -->
+          <g fill="#c9a84c" opacity="0.5">
+            <circle cx="30"  cy="20" r="1.2"/><circle cx="75"  cy="35" r="0.8"/>
+            <circle cx="130" cy="18" r="1.5"/><circle cx="180" cy="40" r="1"/>
+            <circle cx="220" cy="15" r="1.8"/><circle cx="270" cy="32" r="0.9"/>
+            <circle cx="320" cy="22" r="1.3"/><circle cx="370" cy="38" r="1"/>
+            <circle cx="55"  cy="55" r="0.8"/><circle cx="350" cy="60" r="1.2"/>
+            <circle cx="100" cy="50" r="0.7"/><circle cx="290" cy="48" r="0.8"/>
+          </g>
+          <!-- 月 -->
+          <circle cx="340" cy="35" r="18" fill="url(#moon)" opacity="0.25"/>
+          <circle cx="350" cy="28" r="14" fill="#0f0c29" opacity="0.7"/>
+          <!-- 道路 -->
+          <rect x="0" y="145" width="400" height="55" fill="#1a1a2e" opacity="0.9"/>
+          <rect x="0" y="143" width="400" height="4" fill="#c9a84c" opacity="0.3"/>
+          <!-- センターライン -->
+          <g fill="#c9a84c" opacity="0.4">
+            <rect x="20"  y="168" width="40" height="4" rx="2"/>
+            <rect x="80"  y="168" width="40" height="4" rx="2"/>
+            <rect x="140" y="168" width="40" height="4" rx="2"/>
+            <rect x="200" y="168" width="40" height="4" rx="2"/>
+            <rect x="260" y="168" width="40" height="4" rx="2"/>
+            <rect x="320" y="168" width="40" height="4" rx="2"/>
+            <rect x="380" y="168" width="20" height="4" rx="2"/>
+          </g>
+          <!-- 車シルエット -->
+          <g transform="translate(105,100)" fill="#5dade2" opacity="0.85">
+            <rect x="20" y="28" width="155" height="42" rx="6"/>
+            <rect x="38" y="10" width="110" height="30" rx="8"/>
+            <rect x="48" y="14" width="42" height="22" rx="3" fill="rgba(135,206,235,0.55)"/>
+            <rect x="98" y="14" width="42" height="22" rx="3" fill="rgba(135,206,235,0.55)"/>
+            <circle cx="45"  cy="72" r="12" fill="#1a1a2e"/>
+            <circle cx="45"  cy="72" r="7"  fill="#444"/>
+            <circle cx="45"  cy="72" r="3"  fill="#888"/>
+            <circle cx="150" cy="72" r="12" fill="#1a1a2e"/>
+            <circle cx="150" cy="72" r="7"  fill="#444"/>
+            <circle cx="150" cy="72" r="3"  fill="#888"/>
+            <!-- ヘッドライト -->
+            <rect x="168" y="36" width="12" height="8" rx="2" fill="#fffde7" opacity="0.9"/>
+            <!-- テールライト -->
+            <rect x="15" y="36" width="10" height="8" rx="2" fill="#e74c3c" opacity="0.9"/>
+          </g>
+          <!-- ヘッドライトの光 -->
+          <g opacity="0.15" fill="#fffde7">
+            <polygon points="275,118 310,110 310,140 275,135"/>
+            <polygon points="275,118 340,100 340,155 275,135"/>
+          </g>
+          <!-- シールドマーク -->
+          <g transform="translate(18,18)" opacity="0.55">
+            <path d="M16,2 L30,8 L30,20 Q30,28 16,34 Q2,28 2,20 L2,8 Z" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+            <text x="16" y="24" text-anchor="middle" fill="#c9a84c" font-size="12" font-weight="bold">保</text>
+          </g>
+          <text x="200" y="195" text-anchor="middle" fill="#5dade2" opacity="0.2" font-size="9" font-family="monospace" letter-spacing="2">CAR INSURANCE DASHBOARD</text>
+        </svg>
+        <div class="art-icon">🚗</div>
+        <div class="card-badge">Family</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">保険 · 自動車 · 家族管理</div>
+        <h3 class="card-title">車保険ダッシュボード</h3>
+        <p class="card-desc">
+          5台分の任意保険・自賠責をまとめて可視化。
+          更新期限の近い順に表示し、等級・保険料・年齢条件を一目で確認できる家族向け管理ツール。
         </p>
         <div class="card-links">
           <span class="btn btn-primary">開く ↗</span>
